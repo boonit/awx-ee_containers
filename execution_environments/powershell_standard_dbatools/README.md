@@ -1,5 +1,7 @@
+
 # Description
-This is a repository that is an execution environment for AWX. The purpose of this execution environment  is that it includes PowerShell and also dbatools as a module. 
+This is a repository that is an execution environment for AWX. The purpose of this execution environment  is that it includes PowerShell and also dbatools as a module. DBAtools  1.0.147 is included in the container. 
+
 For the current projects I am working on this is what is needed.
 
 In order to use this execution environment there is two ways that you can use it. 
