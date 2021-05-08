@@ -1,0 +1,19 @@
+---
+version: 1
+dependencies:
+  galaxy: requirements.yml
+  python: requirements.txt
+  system: bindep.txt
+additional_build_steps:
+  append:
+    - RUN alternatives --set python /usr/bin/python3
+    - RUN pip3 uninstall --yes ansible-runner && pip3 install ansible-runner==2.0.0a2
+    - RUN curl https://packages.microsoft.com/config/rhel/7/prod.repo | tee /etc/yum.repos.d/microsoft.repo
+    - RUN yum install -y powershell
+    - RUN pwsh -command "Install-Module -Name dbatools -Scope CurrentUser  -force"
+    - COPY --from=quay.io/project-receptor/receptor:0.9.7 /usr/bin/receptor /usr/bin/receptor
+    - RUN mkdir -p /var/run/receptor
+    - USER 1000
+    - ADD run.sh /run.sh
+    - CMD /run.sh
+    - RUN git lfs install
