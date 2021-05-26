@@ -11,6 +11,7 @@ additional_build_steps:
     - RUN curl https://packages.microsoft.com/config/rhel/7/prod.repo | tee /etc/yum.repos.d/microsoft.repo
     - RUN yum install -y powershell
     - RUN pwsh -command "Install-Module -Name dbatools -Scope CurrentUser  -force"
+    - RUN pwsh -command "Install-Module -Name PSAnsibleHelperFunctions4Linux -Scope CurrentUser  -force"
     - COPY --from=quay.io/project-receptor/receptor:0.9.7 /usr/bin/receptor /usr/bin/receptor
     - RUN mkdir -p /var/run/receptor
     - USER 1000
