@@ -1,3 +1,4 @@
 awxkit>=19.0.0
 pypsrp
 urllib3
+cs
